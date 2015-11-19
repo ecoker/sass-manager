@@ -1,0 +1,153 @@
+@import "variables/theme";
+@import "variables/globals";
+
+/* This contains the white label version of styles that conflic with the site themes --- */
+section .stepHeader .headerText {
+  display: block;
+  position: relative;
+  margin: 0;
+  font-size: 22px;
+  font-weight: 400; }
+
+section .stepHeader .headerText .stepNumber .number {
+  color: white;
+  // background-color: #AAAAAA;
+  font-size: 18px;
+  display: inline-block;
+  line-height: 32px;
+  height: 32px;
+  width: 32px;
+  font-weight: 400;
+  border-radius: 50%;
+  text-align: center; }
+
+section .stepHeader .headerText .stepNumber .done {
+  height: 32px;
+  width: 32px;
+  vertical-align: middle;
+  margin-right: 2px;
+  display: none; }
+
+section.active .stepHeader {
+  color: #333333;
+}
+
+section.active .stepHeader .headerText .stepNumber .number {
+  background-color: #333333; }
+
+.edit {
+  border-radius: $inputBorderRadius;
+  font-size: 18px;
+  padding: 5px 0;
+  width: 3em;
+  text-align: center;
+  border: 1px solid #AAAAAA;
+  color: #AAAAAA;
+  background-color: #EEEEEE;
+  font-weight: 400;
+}
+
+/* SIDE BY SIDE PANELS --- */
+ul.panel.g.sideBySide {
+  margin-bottom: 0; }
+
+ul.panel.g.sideBySide li.item, ul.panel.g.sideBySide li.link {
+  position: relative;
+  margin-bottom: 0; }
+
+ul.panel.g.sideBySide li.item .addr-phone {
+  text-decoration:none;
+  color:inherit;
+}
+
+.panel.sideBySide {
+  color: #AAAAAA; }
+
+.panel.sideBySide input[type=radio] + label {
+  margin-top: 0;
+  position: relative;
+  font-size: 16px;
+  cursor: pointer; }
+
+.panel.sideBySide input[type=radio]:checked + label {
+  color: black; }
+
+.panel.sideBySide .different input[type=radio] + label .inputLabel, .savedCard .different .inputLabel {
+  padding-right: 0; }
+
+#savedCards li .cardDetails > div {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%); }
+
+#savedCards li .cardDetails {
+  padding: $standardPadding;
+  top: 0;
+  -webkit-transform: none;
+  -ms-transform: none;
+  transform: none;
+  position: relative;
+  height: 7em;
+  background-color: white; }
+
+#savedCards li .savedCard {
+  border: 1px solid #AAAAAA;
+  overflow: hidden;
+  border-radius: $inputBorderRadius; }
+
+#savedCards li .pinEntry {
+  display: none;
+  width: 100%;
+  background-color: #EDEDED;
+  border-top: 1px solid #AAAAAA;
+  border-bottom: none;
+  border-left: none;
+  border-right: none;
+  vertical-align: middle; }
+
+@media screen and (min-width: $lg) {
+  ul.panel.g.sideBySide {
+    border: none;
+    border-radius: 0; }
+  ul.panel.g.sideBySide li.item {
+    position: relative;
+    border: 1px solid #AAAAAA;
+    border-radius: $inputBorderRadius;
+    min-height: 8em;
+    text-align: center;
+    margin-bottom: 1em;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d; }
+  ul.panel.g.sideBySide li.item > div {
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%); }
+  ul.panel.g.sideBySide li.item label {
+    text-align: left; }
+}
+
+/* PAYMENT SWITCHER --- */
+#paymentType label {
+  color: #AAAAAA;
+  background-color: #EDEDED;
+  border-top: 1px solid #AAAAAA;
+  border-left: 1px solid #AAAAAA;
+  border-bottom: 1px solid #AAAAAA;
+  padding: 8px;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+#paymentType div div:first-child label {
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+}
+
+#paymentType div div:last-child label {
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+  border-right: 1px solid #AAAAAA;
+}

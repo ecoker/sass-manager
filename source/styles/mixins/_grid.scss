@@ -1,0 +1,151 @@
+@mixin gridPart($mult:1,$div:1,$spacing:false) {
+    @if $spacing {
+        $w:round(100000% * $mult / $div) / 1000;
+        $spacing:$spacing * ($div - $mult) / $div;
+        width: calc(#{$w} - #{$spacing});
+        $w:round(99750% * $mult / $div) / 1000;
+        *width:$w - 1%;
+    } @else {
+        width: round(99990% * $mult / $div) / 1000;
+        *width: round(99750% * $mult / $div) / 1000;
+    }
+}
+
+@mixin grid($prefix:'',$spacing:false) {
+    @if str-length($prefix) > 0 {
+      $prefix: $prefix + '-';
+    }
+    @if ($spacing) {
+        $pre : '> ';
+    } @else {
+        $pre : '';
+    }
+    #{$pre}.u-#{$prefix}1-24 {
+        @include gridPart(1,24,$spacing);        
+    }
+    #{$pre}.u-#{$prefix}1-12,
+    #{$pre}.u-#{$prefix}2-24 {
+        @include gridPart(1,12,$spacing);
+    }
+
+    #{$pre}.u-#{$prefix}1-8,
+    #{$pre}.u-#{$prefix}3-24 {
+        @include gridPart(1,8,$spacing);
+    }
+
+    #{$pre}.u-#{$prefix}1-6,
+    #{$pre}.u-#{$prefix}4-24 {
+        @include gridPart(1,6,$spacing);
+    }
+
+    #{$pre}.u-#{$prefix}1-5 {
+        @include gridPart(1,5,$spacing);
+    }
+
+    #{$pre}.u-#{$prefix}5-24 {
+        @include gridPart(5,24,$spacing);
+    }
+
+    #{$pre}.u-#{$prefix}1-4,
+    #{$pre}.u-#{$prefix}6-24 {
+        @include gridPart(1,4,$spacing);
+    }
+
+    #{$pre}.u-#{$prefix}7-24 {
+        @include gridPart(7,24,$spacing);
+    }
+
+    #{$pre}.u-#{$prefix}1-3,
+    #{$pre}.u-#{$prefix}8-24 {
+        @include gridPart(1,3,$spacing);
+    }
+
+    #{$pre}.u-#{$prefix}3-8,
+    #{$pre}.u-#{$prefix}9-24 {
+        @include gridPart(3,8,$spacing);
+    }
+
+    #{$pre}.u-#{$prefix}2-5 {
+        @include gridPart(2,5,$spacing);
+    }
+
+    #{$pre}.u-#{$prefix}5-12,
+    #{$pre}.u-#{$prefix}10-24 {
+        @include gridPart(5,12,$spacing);
+    }
+
+    #{$pre}.u-#{$prefix}11-24 {
+        @include gridPart(11,24,$spacing);    
+    }
+
+    #{$pre}.u-#{$prefix}1-2,
+    #{$pre}.u-#{$prefix}12-24 {
+        @include gridPart(1,2,$spacing);
+    }
+
+    #{$pre}.u-#{$prefix}13-24 {
+        @include gridPart(13,24,$spacing);
+    }
+
+    #{$pre}.u-#{$prefix}7-12,
+    #{$pre}.u-#{$prefix}14-24 {
+        @include gridPart(7,12,$spacing);
+    }
+
+    #{$pre}.u-#{$prefix}3-5 {
+        @include gridPart(3,5,$spacing);
+    }
+
+    #{$pre}.u-#{$prefix}5-8,
+    #{$pre}.u-#{$prefix}15-24 {
+        @include gridPart(5,8,$spacing);
+    }
+
+    #{$pre}.u-#{$prefix}2-3,
+    #{$pre}.u-#{$prefix}16-24 {
+        @include gridPart(2,3,$spacing);
+    }
+
+    #{$pre}.u-#{$prefix}17-24 {
+        @include gridPart(17,24,$spacing);
+    }
+
+    #{$pre}.u-#{$prefix}3-4,
+    #{$pre}.u-#{$prefix}18-24 {
+        @include gridPart(3,4,$spacing);
+    }
+
+    #{$pre}.u-#{$prefix}19-24 {
+        @include gridPart(19,24,$spacing);
+    }
+
+    #{$pre}.u-#{$prefix}4-5 {
+        @include gridPart(4,5,$spacing);
+    }
+
+    #{$pre}.u-#{$prefix}5-6,
+    #{$pre}.u-#{$prefix}20-24 {
+        @include gridPart(5,6,$spacing);
+    }
+
+    #{$pre}.u-#{$prefix}7-8,
+    #{$pre}.u-#{$prefix}21-24 {
+        @include gridPart(7,8,$spacing);
+    }
+
+    #{$pre}.u-#{$prefix}11-12,
+    #{$pre}.u-#{$prefix}22-24 {
+        @include gridPart(11,12,$spacing);
+    }
+
+    #{$pre}.u-#{$prefix}23-24 {
+        @include gridPart(23,24,$spacing);
+    }
+
+    #{$pre}.u-#{$prefix}1,
+    #{$pre}.u-#{$prefix}1-1,
+    #{$pre}.u-#{$prefix}5-5,
+    #{$pre}.u-#{$prefix}24-24 {
+        width: 100%;
+    }
+}

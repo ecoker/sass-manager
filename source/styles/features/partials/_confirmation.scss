@@ -1,0 +1,87 @@
+#confirmation-content {
+	padding-top:50px;
+	padding-bottom:50px;
+
+	@media (max-width:$md) {
+		padding-top:.75em;
+		padding-bottom:.75em;
+	}
+}
+
+#confirmationWrapper {
+	
+	@media (max-width:$md) {
+		> div:first-child {
+			border-bottom: none;
+		}
+	}
+
+	.g {
+		width:100%;
+	}
+
+	.section-title {
+		font-size:2em;
+	}
+
+	p {
+		color:#666666;
+		max-width:330px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	.user-submission-preview {
+		color:#666;
+
+		&.user-address {
+			margin:1.3em 0;
+		}
+	}
+
+
+	@media (min-width: $md) {
+		.narrow {
+			margin-left: $standardPadding;
+			margin-right: $standardPadding;
+		}
+	}
+}
+
+.confirmationPanelContent {
+	border:1px solid #D3D3D3;
+	box-shadow: 0px 0px 8px 0px rgba(6,16,48,0.20);
+	display:flex;
+	
+	@media (max-width:$md) {
+		border:none;
+		+ .confirmationPanelContent {
+			margin-top:.75em;
+		}
+	}
+
+	border-radius:$itemBorderRadius;
+	background:rgba(#fff, 0.94);
+	text-align:center;
+	margin-bottom:0;
+	padding: 2.5em 1.25em;
+
+	strong, em {
+		color:$primaryFontColor;
+	}
+
+	padding: 30px 40px;
+	border: 1px solid #D3D3D3;
+	border-radius: $itemBorderRadius;
+	background: rgba(#fff, 0.94);
+	text-align: center;
+	width: 100%;
+}
+
+#emailOptInWrapper form, .confirmationPanelContent {
+	display: flex;
+	flex-direction:column;
+	> [class*="u-"]:first-child {
+		flex:1;
+	}
+}

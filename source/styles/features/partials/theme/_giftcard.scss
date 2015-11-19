@@ -1,0 +1,59 @@
+#checkGiftCardBalanceButton {
+	display:block;
+	text-align:center;
+}
+
+#gift-card-balance .drumroll {
+	@include headingFont();
+	font-style:normal;
+}
+#giftCardForm {
+	float:none;
+	width:100%;
+}
+#giftCardImage {
+	padding-left:0;
+}
+@media (min-width:$lg) {
+	#giftCardImage {
+		float:right;
+		display:block;
+		padding-left:1em;
+		width: 43%;
+		svg {
+			width:100%;
+		}
+	}
+	#giftCardForm {
+		width:57%;
+		float:left;
+	}
+	#giftCardNumberInput {
+		padding-left:0.4em;
+		padding-right:0.4em;
+	}
+}
+@media (min-width:$md) and (max-width:$lg) {
+	#giftCardImage {
+		display:block;
+		float:none;
+		text-align:left;
+		width:100%;
+	}
+}
+@media (min-width:$sm) and (max-width:$md) {
+	#giftCardImage {
+		float:right;
+		display:block;
+		padding-left:1.75em;
+	}
+	#giftCardForm {
+		width:50%;
+		float:left;
+	}
+}
+@media (max-width:$sm) {
+	#giftCardImage {
+		text-align:center;
+	}
+}

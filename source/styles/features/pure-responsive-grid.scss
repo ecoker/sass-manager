@@ -1,0 +1,15 @@
+/* SMALL GRID u-sm-1-2 --- */
+@import 'partials/pure/grid_r_sm';
+@media screen and (min-width: $sm) { .u-sm-auto {  width: auto; } }
+
+
+/* MEDIUM GRID u-md-1-2 --- */
+@import 'partials/pure/grid_r_md';
+@media screen and (min-width: $md) { .u-md-auto { width: auto; } }
+
+/* LARGE GRID u-lg-1-2 --- */
+@import 'partials/pure/grid_r_lg';
+@media screen and (min-width: $lg) { .u-lg-auto { width: auto; } }
+
+/* X-LARGE GRID u-xl-1-2 --- */
+@import 'partials/pure/grid_r_xl';

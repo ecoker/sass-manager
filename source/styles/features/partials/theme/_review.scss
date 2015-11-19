@@ -1,0 +1,113 @@
+#order-summary,
+#totals.panel {
+	padding: 1em;
+
+	h2 {
+		font-size: 1.65em;
+		margin-bottom: 0.8em;
+	}
+
+	.item {
+		line-height: 1.7em;
+	}
+
+	hr {
+		margin: 0.6em 0 1em 0;
+	}
+}
+
+/* THEME SPECIFIC */
+
+
+
+#lineItems .panel,
+#totals.panel {
+	@media (max-width: $md) {
+		border: 1px solid $inactiveCardBorderColor;
+		border-radius: $itemBorderRadius;
+	}
+}
+
+#order-summary,
+#totals.panel {
+	.item:not(.total) {
+		color: $labelColor;
+	}
+}
+
+.item.total,
+.productInfo .price {
+	@include headingFont();
+
+	.deemphasized {
+		//@include supportFont();
+		font-weight: normal;
+	}
+}
+
+@media (min-width:$sm) and (max-width:$md) {
+	#lineItems .price span.deemphasized {
+		display:block;
+		text-align:center;
+	}
+	#reviewStep #lineItems {
+		padding:0;
+	}
+}
+
+#lineItems .price {
+	line-height:1em;
+}
+#lineItems .price .orig-price {
+	@include supportFont();
+	font-size:0.75em;
+	line-height:1.3em;
+	display:block;
+	text-decoration: line-through;
+
+}
+#lineItems .price .bogo-price,
+#lineItems .price .bogo-text {
+	@include supportFont();
+	font-size:0.75em;
+	color: $discountColor;
+	text-transform:uppercase;
+}
+
+.attribute,
+.productPic {
+	color: $subtextColor;
+}
+
+#reviewStep {
+	.order-review-total {
+		@include headingFont();
+		font-size:1.15em;
+		font-weight:bold;
+	}
+
+	.subsection {
+		@media (max-width: $md) {
+			border-bottom: none;
+		}
+	}
+}
+
+.summary {
+	.row {
+		border-color: $inactiveCardBorderColor;
+
+		> div {
+			padding: 15px 19px;
+		}
+	}
+
+	.icon-arrow {
+		background-position: right center;
+		transform: none;
+	}
+}
+#orderSummary #totals {
+	border:1px solid $inactiveCardBorderColor;
+	border-radius:$itemBorderRadius;
+}

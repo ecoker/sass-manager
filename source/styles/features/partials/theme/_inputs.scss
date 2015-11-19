@@ -1,0 +1,93 @@
+input[type="text"], input[type="password"], input[type="email"], 
+input[type="url"], input[type="date"], 
+input[type="month"], input[type="time"], 
+input[type="datetime"], input[type="datetime-local"], 
+input[type="week"], input[type="number"], input[type="search"], 
+input[type="tel"], input[type="color"], textarea {
+	@include inputBox();
+	padding: 0.62em;
+	color: $inputColor;
+
+	&:focus:not(.input-validation-error) {
+		border-color:$borderColor;
+		box-shadow: 0px 0px 4px 0px #1BB2F6, inset 0px 5px 1px 0px #FBFBFB;
+	}
+
+	&.input-validation-error {
+		border: 1px solid $errorInputBorder;
+	}
+}
+
+input[type="checkbox"] + label > span.inputReplacement {
+	@include inputBox();
+	display: flex;
+	text-align: center;
+
+	i {
+		background-image: url("data:image/svg+xml;utf8,<?xml version='1.0' encoding='UTF-8' standalone='no'?><svg width='21px' height='19px' viewBox='0 0 21 19' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:sketch='http://www.bohemiancoding.com/sketch/ns'><title>Check</title><desc></desc><defs></defs><g id='Skin:-Famous-Footwear' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd' sketch:type='MSPage'><g id='2.-Payment:-Add-Promo' sketch:type='MSArtboardGroup' transform='translate(-92.000000, -1225.000000)' stroke='#666666' fill='#666666'><g id='Payment' sketch:type='MSLayerGroup' transform='translate(67.000000, 380.000000)'><g id='Billing-Address-Copy' transform='translate(19.000000, 790.000000)' sketch:type='MSShapeGroup'><g id='Checkbox:-Billing' transform='translate(1.500000, 50.000000)'><path d='M12.7967837,22.5023443 C12.4951417,22.5023443 12.2079291,22.3700754 12.0114152,22.1388623 L6.10397349,15.1825448 C5.73568169,14.7486339 5.78858928,14.0982828 6.22284379,13.729991 C6.65572408,13.3613556 7.30641873,13.4142632 7.67539764,13.8481742 L12.7160481,19.784131 L22.2644939,6.06594859 C22.5888106,5.59905628 23.2305728,5.48327799 23.6988393,5.80896887 C24.1660752,6.13397264 24.2815099,6.77642195 23.955819,7.24365781 L13.642618,22.0605316 C13.4605335,22.3230082 13.1661061,22.4858537 12.8462557,22.5013137 C12.829765,22.5020008 12.8132744,22.5023443 12.7967837,22.5023443' id='Check'></path></g></g></g></g></g></svg>");
+	}
+
+	svg {
+		height: 18px;
+		width: 20px;
+		align-self: center;
+		margin: 0 auto;
+	}
+}
+
+// DEFAULT PLACEHOLDER COLORS
+::-webkit-input-placeholder {color: $subtextColor}
+:-moz-placeholder {color: $subtextColor}
+::-moz-placeholder {color: $subtextColor}
+:-ms-input-placeholder {color: $subtextColor }
+option[disabled], option:disabled { color:$subtextColor }
+
+textarea {
+	height: 4em;
+}
+
+.dropdown {
+	border-color: $borderColor;
+	box-shadow: inset 0px -4px 1px 0px #F9F9F9;
+
+	div.arrow {
+		border-color: $borderColor;
+		background: url('/Assets/Shared/Images/icon_arrow-sm-down.png') no-repeat no-repeat;
+		background-position: 50%;
+		border-left: 1px solid $borderColor;
+	}
+
+	select {
+		color: $standardBodyCopyColor;
+		padding: 0.62em;
+		color: $inputColor;
+	}
+}
+
+.button {
+	background: $secondaryBackgroundColor;
+	background-image: linear-gradient(-180deg, $secondaryColorHighlight 0%, $secondaryBackgroundColor 100%);
+	border-radius: $inputBorderRadius;
+
+	&:hover {
+		background: #0067A4;
+		background-image: linear-gradient(-180deg, #168CD3 0%, #0067A4 100%);
+	}
+
+	&:disabled {
+		background:$disabledButtonColor;
+	}
+
+	&.primary-button {
+		@include primaryButtonStyles();
+	}
+}
+
+input[type="radio"]:checked + label > span.inputReplacement span {
+	display: none; /* NO NEED FOR THE INNER ONE */
+
+	input:checked + label {
+		border: none;
+		box-shadow: none;
+	}
+}

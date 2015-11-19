@@ -1,0 +1,44 @@
+@import '../variables/theme';
+
+.shipping-details-overlay {
+	.heading {
+		@include headingFont();
+		font-weight:bold;
+		font-size:1.75em;
+		margin:0;
+	}
+	section {
+		width:100%;
+		border:none;
+		background:white;
+		box-shadow:none;
+		+ section {
+			border-top: 1px solid $sectionBorderColor;
+			padding-top:1em;
+			margin-top:1em;
+		}
+	}
+	.description, .exclusion {
+		color:$standardBodyCopyColor;
+	}
+	.description {
+		font-style:italic;
+		display:inline-block;
+	}
+	.exclusion {
+		display:inline-block;
+		margin-top:1em;
+	}
+	.description + ul {
+		margin-top:1em;
+	}
+	ul {
+		float:none;
+		list-style:none;
+		margin:0;
+		padding:0;
+	}
+	.details li {
+		color:$secondaryFontColor;
+	}
+}

@@ -1,0 +1,97 @@
+h2, .headerText {
+  @include headingFont();
+}
+
+.stepHeader {
+  padding:floor($gutter * 4 / 5) $gutter;
+  color: $disabledStepColor;
+
+  .number {
+    background-color: $disabledStepIconColor;
+  }    
+}
+
+section {
+  &.active,
+  &.complete {
+    box-shadow: 0px 1px 3px 0px rgba(6,16,48,0.20);
+  }
+  &:not(.active):not(.complete) {
+    .stepHeader {
+      border:1px solid $disabledSectionBorderColor;
+    }
+  }
+}
+
+.headerText {
+	@media (max-width:$sm) {
+		font-size:32px;
+	}
+	.stepNumber {
+		width:1.45em;
+		display:inline-block;
+		margin-right:.15em;
+		vertical-align: middle;
+		font-size:.95em;
+		position: relative;
+    top: -.1em;
+	}
+	display: block;
+  position: relative;
+  margin: 0;
+  font-size: 30px;
+  font-weight: 400;
+	.number, .done {
+		width:100%;
+		max-width:1.65em; // keep it round
+		height:100%;
+	}
+	.number {
+		color: white;
+	  font-size: .825em;
+	  display: inline-block;
+	  line-height: 1.65em;
+	  font-weight: 400;
+	  border-radius: 10em;
+	  text-align: center;
+	  @include supportFont();
+	  font-weight:bold;
+	}
+	.done {
+		vertical-align: middle;
+	  margin-right: .25em;
+	  display: none;
+	}
+}
+
+.stepHeader {
+	@media(max-width:$sm) {
+		padding:1.25em 20px;
+		.edit {
+			margin-top:.25em;
+		}
+	}
+}
+
+.complete {
+	.stepNumber {
+		color:$completedStepIconColor;
+	}
+	.step {
+		color:$completedStepColor;
+	}
+}
+
+.active {
+	.number {
+		background-color:$currentStepIconColor;
+	}
+	.step {
+		color:$currentStepColor;
+	}
+}
+
+.edit {
+	font-size:1.05em;
+	@include editButtonStyles();
+}

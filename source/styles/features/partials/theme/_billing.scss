@@ -1,0 +1,68 @@
+#billingAddressEntry {
+	.u-1.link {
+		padding-left:0;
+	}
+	
+	hr {
+		width:100%
+	}
+}
+
+#cardEntrySubsection {
+	.g + .g {
+		padding-top:1em;
+	}
+}
+
+#paymentMethod {
+	border-bottom: none;
+
+	h2 {
+		margin-bottom: 24px;
+	}
+}
+
+.panel.drawer {
+	.title .heading {
+		font-size: 18px;
+	}
+
+	.content > .deemphasized:first-child {
+		margin-top: 0;
+	}
+}
+
+#promoDrawer .g > div:last-child {
+	margin-bottom: 0;
+}
+
+.validIcon {
+	color: #1AB030;
+}
+
+#gift-card-balance {
+	h1 {
+		color: #00B13A;
+		font-size: 40px;
+	}
+
+	.drumroll {
+		color: $labelColor;
+		font-size: 24px;
+	}
+}
+
+.validIcon, .invalidIcon {
+	margin: 8px 10px 0 0;
+}
+
+#cardType {
+	margin-top: 7px;
+}
+#payPal {
+	padding-top:0;
+	p {
+		color: $labelColor;
+		line-height: 22px;
+	}
+}

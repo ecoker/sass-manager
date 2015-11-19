@@ -1,0 +1,22 @@
+.ibm {
+  display: inline-block;
+  vertical-align: middle;
+}
+.badge, .badge-label {
+  font-size:1.15em;
+  position:relative;
+  top:.1em;
+}
+h1 + .badge {
+  margin-left:.5em;
+}
+.badge + .badge-label {
+  margin-left:.25em;
+}
+.badge {
+  background: #f9c64f;
+  color:white;
+  padding: .2em 1em;
+  font-weight: bold;
+  border-radius: .5em;
+}

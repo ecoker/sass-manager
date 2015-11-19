@@ -1,0 +1,58 @@
+#paymentType {
+	.g {
+		[class*="u-"] {
+			/* SET UP BORDER RADIUS AND BORDER WIDTHS AS APPROPRIATE FOR FIRST AND LAST ELEMENTS --- */
+			&:first-of-type {
+				label {
+					border-radius:$inputBorderRadius 0 0 $inputBorderRadius;
+				}
+				input + label {
+					border-top-width:1px;
+					border-left-width:1px;
+					border-bottom-width:1px;
+					border-right-width:0;
+				}
+			}
+			&:last-of-type {
+				label {
+					border-radius:0 $inputBorderRadius $inputBorderRadius 0;
+				}
+				input + label {
+					border-left-width:0;
+					border-top-width:1px;
+					border-right-width:1px;
+					border-bottom-width:1px;
+				}
+			}
+			/* DEFAULT BORDER WIDTHS AND COLORS --- */
+			input + label {
+				border-style:solid;
+				border-color:$secondaryFontColor;
+				border-width:1px;
+				border-left-width:0;
+				border-right-width:0;
+				color:$secondaryFontColor;
+			}
+			/* CHECKED STATES --- */
+			input:checked + label {
+				border-width:0px;
+				background-color:$secondaryFontColor;
+				background-image:linear-gradient(bottom, lighten($secondaryFontColor, 8.5%), $secondaryFontColor);
+				box-shadow:inset 1px 0px 5px rgba(0, 0, 0, 0.3);
+				color:white;
+			}
+		}
+	}
+	/* BASIC SIZING AND COLORS --- */
+	label {
+		box-sizing:border-box;
+		height:2.25em;
+		font-size:1.05em;
+		padding:.5em 0;
+	}
+	input:checked + label {
+		background:white;
+		color:$secondaryFontColor;
+		border-color:$secondaryFontColor;
+	}
+}

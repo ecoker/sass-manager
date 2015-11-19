@@ -1,0 +1,48 @@
+#loginWrapper {
+	@include wrapperCard();
+	margin: $gutter / 2 0;
+
+	h2 {
+		color: $primaryFontColor;
+		font-size: 30px;
+	}
+
+	p {
+		line-height: 1.5em;
+	}
+
+	.g.space > [class*="u-"]:last-of-type {
+		margin-bottom: 0;
+	}
+
+	@media (max-width: $sm) {
+		> .g > div {
+			border-bottom: none;
+		}
+
+		#guestLogin {
+			border-top: 2px solid $dividerBorderColor;
+		}
+	}
+
+	@media (min-width:$sm) {
+		padding: $standardPadding;
+		background-color: white;
+	  > .g > div {
+			border-bottom: none;
+	    border-right: 1px solid #EDEDED;
+		}
+	  > .g > div:last-child {
+	    border-right: none; 
+	  }
+	  #guestLogin h2, #guestLogin p {
+	    display: block;
+	  }
+	}
+
+	.forgot-password {
+		font-size: 14px;
+		margin-top: 4px;
+		margin-bottom: 10px;
+	}
+}

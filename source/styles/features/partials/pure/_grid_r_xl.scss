@@ -1,0 +1,14 @@
+@import '../../variables/globals';
+@import '../../mixins/_grid.scss';
+
+@media screen and (min-width:$xl) {
+    @include grid('xl');
+		.g.space, .g.space > r {
+        .u-xl-1 { margin-right:0 !important }
+    }
+    .g {
+	    &.space, &.space > .r {
+				@include grid('xl', $gutter);
+			}
+		}
+}

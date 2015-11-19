@@ -1,0 +1,114 @@
+Data Elements Required:
+Google
+Order Value
+Order ID
+
+
+<!-- 
+DRS: 1070622418
+Lifestride: 1070622448
+NatCA: 974424358
+Ryka: 997683844
+-->
+
+<!-- Google Code for Remarketing Tag -->
+<!-- Remarketing tags may not be associated with personally identifiable information or placed on pages related to sensitive categories. See more information and instructions on how to setup the tag on: http://google.com/ads/remarketingsetup -->
+<script type="text/javascript">
+var google_tag_params = {
+	ecomm_prodid: 'REPLACE_WITH_VALUE', // PRODUCT ID or Array
+	ecomm_pagetype: 'REPLACE_WITH_VALUE',
+	ecomm_totalvalue: 'REPLACE_WITH_VALUE'
+};
+</script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 997683844;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+</script>
+<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js"></script>
+
+
+
+
+
+<!-- Custom Parameter Definitions -->
+ecomm_prodid: attributes id, item_group_id, or display_ads_id
+ecomm_pagetype:	home, searchresults, category, product, cart, purchase, other
+ecomm_totalvalue:	Total value is the value of the product. On "cart" pages with multiple products, total value is the sum of all items.
+
+
+<!-- Google ReMarketing -->
+<script>
+
+(function(){
+if (typeof s == 'undefined') var s = {products:'', prop11:'', prop40:''};
+var googleRemarketing = { conversion_id: 997683844, remarketing_only: true };
+var params = {};
+// page type
+var pageName = _satellite.getVar('PageName');
+if (/shopping/i.test(pageName)) params.ecomm_pagetype = 'searchresults';
+else if (/product/i.test(pageName)) params.ecomm_pagetype = 'product';
+else if (/cart/i.test(pageName)) params.ecomm_pagetype = 'cart';
+else if (/confirmation/i.test(pageName)) params.ecomm_pagetype = 'purchase';
+else params.ecomm_pagetype = 'other';
+// product id
+console.log(params.ecomm_pagetype, /cart/i.test(params.ecomm_pagetype));
+if (/cart/i.test(params.ecomm_pagetype)) {
+	console.log(s.prop40);
+	if (s.prop40.split(';').length > 1) {
+	  console.log('if passed 2');
+	  params.ecomm_prodid = [];
+	  var items = s.prop40.split(',');
+	  for (var i=0;i<items.length;i++) {
+	    var item_props = items[i].split(';');
+	    params.ecomm_prodid.push(item_props[0] + '-' + item_props[1]);
+	  }
+	}
+} else if (/product/i.test(params.ecomm_pagetype)) {
+	console.log('if passed 1');
+	var products = s.products.split(';');
+	if (products.length > 0 && s.prop11.length > 0) {
+		params.ecomm_prodid = s.products.split(';')[1];
+		if (s.prop11) params.ecomm_prodid = s.prop11 + '-' + params.ecomm_prodid;
+	}
+} 
+// total value
+if (pageName == 'product'){
+  params.ecomm_totalvalue = $('.price').first().text().replace(/[^0-9\.]*/g,'');
+} else if (pageName == 'cart' || pageName == 'purchase') {
+  params.ecomm_totalvalue = _satellite.getVar('Order Value');
+}
+return params;
+})();
+// Google Conversion ID
+
+
+// page name
+var pageName = _satellite.getVar('PageName');
+if (/shopping/i.test(pageName)) pageName = 'searchresults';
+else if (/product/i.test(pageName)) pageName = 'product';
+else if (/cart/i.test(pageName)) pageName = 'cart';
+else if (/confirmation/i.test(pageName)) pageName = 'purchase';
+else pageName = 'other';
+
+// product id
+if (s.prop40.split(';').length > 1) {
+  params.ecomm_prodid = [];
+  var items = s.prop40.split(',');
+  for (var i=0;i<items.length;i++) {
+    var item_props = items[i].split(';');
+    params.ecomm_prodid.push(item_props[0] + '-' + item_props[1]);
+  }
+} else if (_satellite.getVar('ProductGroup').length > 0) {
+  params.ecomm_prodid = _satellite.getVar('ProductGroup') + '-' + _satellite.getVar('productID');
+}
+
+// total value
+if (pageName == 'product'){
+  params.ecomm_totalvalue = $('.price').first().text().replace(/[^0-9\.]*/g,'');
+} else if (pageName == 'cart' || pageName == 'purchase') {
+  params.ecomm_totalvalue = _satellite.getVar('Order Value');
+}
+</script>

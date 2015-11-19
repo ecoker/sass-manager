@@ -1,0 +1,71 @@
+.panel.drawer {
+  padding:0;
+  border: 1px solid $inactiveCardBorderColor;
+  border-radius: 2px;
+
+  ~ .panel.drawer {
+    margin-top:.55em
+  }
+
+  .title {
+    padding:1em;
+    cursor: pointer;
+
+    .heading {
+      font-size: 17px;
+      line-height: 24px;
+      font-weight: 400;
+      margin: 0; 
+    }
+  }
+  .content {
+    padding: 0 1em 1em 1em;
+    display: none;
+    overflow: hidden;
+
+    .inputWrapper {
+      padding:5px 0 0;
+    }
+    .deemphasized {
+      font-size: 0.9em;
+    }
+
+  }
+}
+
+
+.panel.drawer .title .heading .circle {
+  color: white;
+  background-color: black;
+  font-size: 14px;
+  display: inline-block;
+  line-height: 24px;
+  height: 24px;
+  width: 24px;
+  font-weight: 400;
+  border-radius: 50%;
+  text-align: center; }
+
+.panel.drawer .title .icon-arrow {
+  float: right;
+  color: $panelArrowColor;
+  background-color: white;
+  height: 20px;
+  width: 20px; }
+
+.panel.drawer .title .upArrow {
+  display: none; }
+
+.panel.drawer .title .upArrow .icon {
+  transform: rotate(-90deg); }
+
+
+.panel.drawer.forceOpen .content {
+  display: block;
+  height: auto; }
+
+.panel.drawer.open .upArrow {
+  display: block; }
+
+.panel.drawer.open .downArrow {
+  display: none; }

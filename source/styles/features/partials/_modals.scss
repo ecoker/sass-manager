@@ -1,0 +1,234 @@
+/*! modals partial */
+@keyframes spin {
+	from {
+		transform: rotate(0deg);
+	}
+
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+/* MODAL STYLES --- */
+@media (max-width: $sm) {
+	body.mobile-fixed {
+		position: fixed; // fixes a bug on mobile
+	}
+}
+
+.loading-overlay {
+	&.visible {
+		.loading-overlay-spinner {
+			visibility: visible;
+			opacity: 1;
+		}
+	}
+}
+
+[id$="-overlay"], [class*="-overlay"] {
+	position: fixed;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	z-index: 98;
+	background: rgba(255, 255, 255, 0.8);
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity 0.3s, visibility 0.3s;
+
+	&.visible {
+		opacity: 1;
+		visibility: visible;
+
+		[id$="-modal"], [class*="-modal"], + [id$="-modal"], + [class$="-modal"] {
+			transform: translate3d(-50%, -50%, 0);
+			opacity: 1;
+
+			.js-address-fields {
+				display: block !important;
+			}
+		}
+	}
+
+	ul.g {
+		padding: 0;
+	}
+}
+
+img {
+	&[id$="-overlay"], &[class*="-overlay"] {
+		background: transparent;
+	}
+}
+
+[class*="overlay-spinner"] {
+	position: absolute;
+	background: none;
+	left: 50%;
+	top: 50%;
+	z-index: 9999;
+	width: 80px;
+	opacity: 0;
+	margin-left: -40px;
+	margin-top: -40px;
+	transition: opacity 0.3s;
+
+	&.visible {
+		opacity: 1;
+	}
+}
+
+[id$="-modal"], [class*="-modal"]:not([class*="overlay"]) {
+	position: absolute;
+	top: 50%;
+	opacity: 0;
+	left: 50%;
+	width: 100%;
+	max-width: 500px;
+	padding: 22px;
+	background: #fff;
+	transform: translate3d(-50%, 20%, 0);
+	box-shadow: 0px 1px 6px 0px rgba(0, 0, 0, 0.18);
+	transition: opacity 0.3s, transform 0.3s;
+
+	> .modal-close {
+		position: absolute;
+		top: 0;
+		right: 0;
+		font-weight: 100;
+		-webkit-font-smoothing: antialiased;
+		text-decoration: none;
+		font-size: 2em;
+		padding: .2em .4em;
+		line-height: 1em;
+		border-left: 1px solid #eee;
+		border-bottom: 1px solid #eee;
+		color: #333;
+	}
+	.header {
+		@include headingFont();
+		font-size: 1.5em;
+	}
+}
+
+#address-validation-content {
+	h2 {
+		margin-bottom: 0.25em;
+	}
+}
+
+#address-modal {
+  hr {
+    margin-bottom:1.5em;
+  }
+}
+
+#address-modal, #shipping-details-modal {
+	@media(min-width: $md) {
+		margin-bottom: 6%;
+		max-width: 622px;
+
+		.modal-footer > .u-md-auto {
+			margin-right: 1em;
+		}
+	}
+
+	@media(max-width: $md) {
+		.modal-footer {
+			text-align: center;
+		}
+	}
+}
+
+#shipping-details-modal {
+	@media(min-width: $sm) {
+		max-width: 480px;
+	}
+	@media (max-width:$sm) {
+		max-width: 100%;
+	}
+}
+
+#credit-card-modal {
+	max-width: 560px;
+
+	hr {
+		border-top: 1px solid transparent;
+		margin-bottom: 1.5em;
+	}
+
+	.button.u-sm-auto {
+		@include disabledButtonStyles(true);
+	}
+
+	.is-valid .button {
+		@include secondaryButtonStyles(true);
+	}
+
+	[class*="u-"] + [class*="-auto"] {
+		padding-left: 1.5em;
+		padding-right: 1.5em;
+	}
+}
+
+.modal-footer {
+	padding: 1em 0;
+
+	.modal-close {
+		line-height: 2.25em;
+	}
+}
+
+body.no-scroll {
+	overflow: hidden;
+
+	[id$="-overlay"], [class*="-overlay"]:not(.loading-overlay-spinner) {
+		overflow-y: scroll;
+		z-index: 101;
+		top: 0;
+		bottom: 0;
+
+		[id$="-modal"], [class*="-modal"]:not([class*="overlay"]) {
+			border-radius: $itemBorderRadius;
+			top:10%;
+			transform: translate3d(-50%, 20%, 0) !important;
+			margin-bottom:5%;
+		}
+
+		&.visible {
+			~ [id$="-overlay"], ~ [class*="-overlay"] {
+				z-index: 0;
+				pointer-events: none;
+			}
+			[id$="-modal"], [class*="-modal"]:not([class*="overlay"]) {
+				transform: translate3d(-50%, 0, 0) !important;
+			}
+		}
+	}
+}
+
+@media (max-width: $sm) {
+	#address-modal, #shipping-details-modal {
+		transform: translate3d(0, 0, 0) !important;
+	}
+
+	body.no-scroll {
+		[id$="-overlay"], [class*="-overlay"]:not(.loading-overlay-spinner) {
+			-webkit-overflow-scrolling: touch;
+		
+			[id$="-modal"], [class*="-modal"]:not([class*="overlay"]) {
+				max-width:100%;
+				position: static;
+				transition: opacity 0.3s, transform 0s;
+				transform: translate3d(0, 0, 0) !important;
+			}
+
+			&.visible {
+				[id$="-modal"], [class*="-modal"]:not([class*="overlay"]) {
+					transform: translate3d(0, 0, 0) !important;
+				} 
+			}
+		}
+	}
+}

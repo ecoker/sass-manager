@@ -1,0 +1,14 @@
+@import '../variables/globals';
+@import '../variables/theme';
+
+
+/* BUTTON STYLES --- */
+@mixin editButtonStyles(){
+	background: linear-gradient(180deg, lighten($editButtonBackground,10%), $editButtonBackground);
+	padding: .45em 1.45em;
+	border-radius: 6px;
+	color:darken($editButtonBorder,15%);
+	border: 1px solid $editButtonBorder;
+	vertical-align: middle;
+	cursor:pointer;
+}

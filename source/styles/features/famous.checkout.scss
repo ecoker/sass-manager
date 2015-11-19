@@ -1,0 +1,212 @@
+@import "variables/globals";
+@import "variables/theme";
+@import "partials/fonts";
+
+body {
+	@include supportFont();
+	background: $pageBodyColor;
+	-webkit-font-rendering: antialiased;
+}
+
+h1, h2, h3, h4, h5 {
+	font-family: $headingFont;
+}
+
+.header {
+	margin-bottom: 10px;
+
+	h2 {
+		font-size: 24px;
+	}
+
+	.deemphasized {
+		margin-top: 12px;
+	}
+
+	.details {
+		margin-left: 26px;
+
+		a {
+			color: $secondaryFontColor;
+		}
+	}
+}
+#stickySummary, #contentWrapper section.active, #contentWrapper section.complete {
+	box-shadow: 0px 1px 3px 0px rgba(6,16,48,0.20);
+}
+#stickySummary, #contentWrapper > section, #contentWrapper > form > section {
+	border-radius: $itemBorderRadius;
+	overflow:hidden;
+}
+
+@media (max-width:$md){
+	#checkout-content, #confirmation-content {
+		> form:first-of-type, #sidebar {
+			margin-top: $gutter / 2;
+		}
+	}
+}
+@media (min-width:$md){
+	#checkout-content, #confirmation-content {
+		> form:first-of-type {
+			margin-top:$gutter/2;
+		}
+	}
+}
+
+.proceed-wrapper, .g .proceed-wrapper[class*=u-] {
+	width: 286px;
+	@media (max-width:$sm) {
+		width:100%;
+	}
+}
+
+/* LINK SVG --- */
+ul.panel li.link:after {
+	// note, we can use -webkit-mask to change the color in the future, but ie support is no good at this time
+	content: '';
+	background-image: url("/Assets/famous/Images/right-arrow.svg");
+	background-size: 100% 100%;
+	background-position: center;
+	height: 0.85em;
+	width: 0.75em;
+	display: inline-block;
+	position: relative;
+	top: 0.05em;
+}
+
+a, ul.panel li.link:after {
+	color: $secondaryFontColor;
+}
+
+label {
+	font-size: .88em;
+	margin-bottom: 0;
+	color: $labelColor;
+}
+
+section .stepBody .subsection {
+	border-color: #E7E7E7;
+	padding-top: 30px;
+	padding-bottom: 30px;
+	+ div > .subsection:first-child {
+		padding-top:0;
+	} 
+
+	&:last-child {
+		padding-bottom: $standardPadding;
+	}
+}
+
+@media screen and (min-width:$sm) {
+	.stepBody {
+		padding-left: $standardPadding;
+		padding-right: $standardPadding;
+		background-color: white;
+	}
+
+	section .stepBody .subsection {
+		padding-left: 0;
+		padding-right: 0;
+	}
+
+	.notification {
+		border-radius: 2px;
+	}
+}
+
+.error-message {
+	color: $errorText;
+	font-size: 0.88em;
+	margin-top: 8px;
+	font-weight: 400;
+}
+
+.discount {
+	color: $discountColor;
+}
+
+span.deemphasized {
+	color: $subtextColor;
+}
+
+#saveAddressOptions {
+	padding-top: $standardPadding;
+	border-top: 1px solid $borderColor;
+}
+
+@media screen and (min-width: $md) {
+	#saved-addresses-panel li, #savedCards li {
+		margin-top: calc(1em - #{$gutter / 2});
+
+		&:not(:last-of-type) {
+			margin-top: $gutter / 2;
+			margin-bottom: $gutter / 2;
+		}
+	}
+}
+
+/* Header */
+#top {
+	padding:$desktopHeaderPadding;
+	background: #fff;
+	box-shadow: 0px 3px 2px 0px rgba(0, 0, 0, 0.12);
+}
+
+/* Footer */
+.customer-service-info-block {
+	font-size: 12px;
+	padding: 1em 0 $gutter $gutter;
+	color: $subtextColor;
+	svg, img.svg {
+		height:3em;
+	}
+	.need-help-info {
+		padding-top:.35em;
+	}
+	span {
+		line-height: 1.25em;
+	}
+}
+
+/* areas */
+.subsection {
+	background: #fff;
+}
+
+.success-check-icon {
+	color: $completedStepIconColor;
+
+	svg {
+		display: block;
+		margin-right: 4px;
+	}
+}
+
+section .stepBody .subsection.stepResult em {
+	margin-bottom: 0.5em;
+}
+
+/* Mega specific overrides */
+#updateShippingForm #shipping-address-properties + .subsection {
+	padding-bottom: 0;
+}
+
+hr {
+	margin-bottom:1.5em;
+}
+
+@import 'partials/theme/inputs';
+@import 'partials/theme/shipping';
+@import 'partials/theme/billing';
+@import 'partials/theme/savedCards';
+@import 'partials/theme/radio-forms';
+@import 'partials/theme/login';
+@import 'partials/theme/giftcard';
+@import 'partials/theme/headers';
+@import "partials/theme/review";
+@import "partials/theme/payment-switch";
+@import "partials/theme/modals";
+@import "partials/theme/icons";
+@import "partials/theme/confirmation-theme";
+@import "partials/theme/address-validation";

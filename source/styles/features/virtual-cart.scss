@@ -1,0 +1,121 @@
+@import 'variables/globals';
+@import 'variables/theme';
+
+/* ---------------------------- */
+/* FONTS ---------------------- */
+/* ---------------------------- */
+@include cartModalFonts();
+
+/* ---------------------------- */
+/* MODAL STYLES --------------- */
+/* ---------------------------- */
+[id$="-modal"] {
+  overflow:hidden;
+  max-height:16em;
+  > * {
+    transition:opacity 400ms linear;
+    opacity:1;
+  }
+  &.loading > *:not(.modal-close) {
+    opacity:0;
+  }
+}
+#cart-modal {
+  padding:$standardPadding * 1.25 $standardPadding * 2 $standardPadding * .75;
+  width:$cartModalWidth;
+  @include cartModalOverride();
+  h4 {
+    @include errorHeading();
+    &.center-text {
+      text-align:center;
+    }
+  }
+  p.note {
+    @include cartNoteFont();
+  }
+  img {
+    @include cartModalImageStyles();
+  }
+  .loader {
+    display:block;
+    text-align:center;
+    @include loader();
+    + h4 {
+      padding-bottom:1.5em;
+    }
+  }
+}
+@import 'partials/modals';
+
+[id$="-modal"] {
+  .modal-close {
+    @include modalClose();
+  }
+  .g {
+    letter-spacing: -0.31em; 
+    *letter-spacing: normal; 
+    *word-spacing: -0.43em; 
+    text-rendering: optimizespeed; 
+    display:flex;
+    flex-flow: row wrap;
+    align-content: flex-start;
+    &.added-items {
+      padding-bottom:$standardPadding;
+      @include addItemOverride();
+    }
+    [class*="u-"] {
+      font-family: sans-serif;
+      display: inline-block;
+      *display: inline; 
+      zoom: 1;
+      letter-spacing: normal;
+      word-spacing: normal;
+      vertical-align: top;
+      text-rendering: auto;
+      &.center {
+        align-self:center;
+      }
+      &.product-image {
+        padding-right:$gutter;
+      }
+      *:last-child {
+        margin-bottom:0;
+      }
+    }
+  }
+}
+
+
+/* ----------------------- */
+/* BUTTON STYLES --------- */
+/* ----------------------- */
+button.js-virtual-cart-btn {
+  @include addToCartButton();
+}
+
+@import 'partials/buttons';
+/* originally from pure scss and wrapped with overlay selector --- */
+#cart-feedback-overlay {
+  button, .button, [type="submit"] {
+    
+    display: inline-block;
+    zoom: 1;
+    line-height: normal;
+    white-space: nowrap;
+    vertical-align: middle;
+    text-align: center;
+    text-decoration:none;
+    cursor: pointer;
+    user-select: none;
+    box-sizing: border-box;
+
+    /* Firefox: Get rid of the inner focus border */
+    &::-moz-focus-inner {
+    padding: 0;
+    border: 0;
+    }
+  
+    /* THEME BUTTON STYLE OVERRIDES --- */
+    @include buttonStyleOverrides();
+  }
+}

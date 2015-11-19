@@ -1,0 +1,299 @@
+/* PANEL --- */
+$paleGrey: #EEEEEE;
+$lightGrey: #EDEDED;
+$lightBorderGrey: #D6D6D6;
+$borderGrey: #AAAAAA;
+$deemphasizedGrey: #999999;
+$darkGrey: #333333;
+
+$radius: 6px;
+$panelPadding: .75em;
+
+@mixin noSelect() {
+  user-select: none;
+  touch-callout: none;
+}
+
+@mixin inputBase() {
+  height: 2.3em;
+  line-height:2.3em;
+  border-radius: $radius;
+  border: 1px solid $borderGrey;
+  outline: 0;
+  padding-left: .75em;
+  font-size:1.15em;
+}
+
+@mixin circle($size) {
+  display: inline-block;
+  line-height: $size;
+  height: $size;
+  width: $size;
+  font-weight: 400;
+  border-radius: 50%;
+  text-align: center;
+}
+
+@mixin verticalCenter($position: relative) {
+  position: $position;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+button, input[type=submit] {
+  color: white;
+  background-color: $darkGrey;
+  border-radius: $radius;
+  padding: 8px;
+  font-size: 18px;
+  border: none;
+  font-weight: 400;
+
+  &:disabled {
+    color: $borderGrey;
+    background-color: transparent;
+    border: 2px solid $borderGrey;
+  }
+
+  &:hover, &:active, &:focus {
+    box-shadow: none;
+    background-image: none;
+  }
+
+  &.fullWidth {
+    display: block;
+    width: 100%;
+  }
+
+  &.active {
+    box-shadow: none;
+  }
+}
+
+label {
+  display: inline-block;
+  font-size: 18px;
+  font-weight: 400;
+  margin-top: 0;
+  margin-bottom: 4px;
+
+  .inheritFont {
+    font-size: inherit;
+    font-weight: 300;
+  }
+}
+
+input {
+  display: block;
+  height: initial;
+  width: 100%;
+
+  &[type="text"], &[type="password"], &[type="email"],
+  &[type="url"], &[type="date"], &[type="month"],
+  &[type="time"], &[type="datetime"], &[type="datetime-local"],
+  &[type="week"], &[type="number"], &[type="search"],
+  &[type="tel"], &[type="color"] {
+    @include inputBase(); 
+  }
+
+  &[type="checkbox"] {
+    display: none;
+
+    & + label {
+      display: flex;
+      margin-bottom: 0;
+      font-size: 15px;
+      align-items: center;
+
+      * {
+        align-items: center;
+      }
+
+      div {
+        float: left;
+        display: inline-block;
+      }
+
+      & > span.inputReplacement {
+        $boxSize: 28px;
+
+        display: inline-block;
+        background-color: white;
+        border: 1px solid $borderGrey;
+        border-radius: $radius;
+        margin-right: 9px;
+        cursor: pointer;
+        line-height: 0;
+        overflow: hidden;
+        height: $boxSize + 2;
+        width: $boxSize + 2;
+        @include noSelect();
+
+        span {
+          display: none;
+          height: $boxSize;
+          width: $boxSize;
+          line-height: $boxSize;
+          text-align: center;
+          font-size: 24px;
+          margin-top: 1px;
+        }
+      }
+    }
+
+    &:checked + label > span.inputReplacement span {
+      display: inline-block;
+    }
+  }
+}
+
+textarea {
+  display: block;
+  width: 100%;
+  height: 6em;
+  @include inputBase();
+}
+
+select {
+  @include inputBase();
+}
+
+/* BASIC SELECT --- */
+.select-wrap {
+  display: flex;
+  position: relative;
+  width: 100%;
+  border-radius: $radius;
+  border: 1px solid $borderGrey;
+  background-color: white;
+  overflow: hidden;
+  @include noSelect();
+
+  select {
+    flex: flex-grow flex-shrink;
+    z-index: 1;
+    height: initial;
+    width: 100%;
+    border: none;
+    appearance: none;
+    color: black;
+    background-color: transparent;
+  }
+
+  div.arrow {
+    position: absolute;
+    right: 0;
+    color: $borderGrey;
+    border-left: 1px solid $borderGrey;
+    height: 100%;
+    line-height:3em;
+    width: 3em;
+    text-align: center;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+/* RADIO --- */
+.group {
+  margin:1em 0;
+  border-radius:1em;
+  border:1px solid #aaa;
+  .radio {
+    padding:1em;
+    + .radio {
+      border-top:1px solid #aaa;
+    }
+  }
+}
+.radio {
+  font-size:1em;
+  display:block;
+  padding:1em 0;
+  span {
+    display:block;
+  }
+  label {
+    position:relative;
+    > * {
+      display:inline-block;
+      vertical-align:top;
+    }
+  }
+  input[type="radio"] {
+    display:none;
+  }
+  input[type="radio"] ~ label {
+    line-height:1.2em;
+  }
+  i, .inputReplacement {
+    width:1.5em;
+    height:1.5em;
+    position:relative;
+    background:white;
+    border:2px solid #aaa;
+    display:inline-block;
+    border-radius:10em;
+    margin-right:.35em;
+  }
+  input[type="radio"]:checked ~ label > i {
+    background:#333;
+    border-color:#333;
+    &:after {
+      content:'';
+      border-radius:10em;
+      border:.3em solid white;
+      position:absolute;
+      left:0;
+      width:100%;
+      height:100%;
+    }
+  }
+  input[type="radio"]:checked ~ label .inputReplacement {
+    background:#333;
+    border-color:#333;
+    > span {
+      content:'';
+      border-radius:10em;
+      border:.3em solid white;
+      position:absolute;
+      left:0;
+      width:100%;
+      height:100%; 
+    }
+
+  }
+}
+
+/* TOGGLE --- */
+.toggle {
+  margin:1em 0;
+  border-radius:$radius;
+  border: 1px solid $borderGrey;
+  overflow:hidden;
+  .inputReplacement {
+    display: none;
+  }
+  [class*="u-1-"]:not(:last-of-type) {
+    border-right: 1px solid $borderGrey;
+  }
+  input[type="radio"] {
+    overflow: hidden;
+    display:none;
+    &:checked + label {
+      color: white;
+      background-color: $borderGrey;
+    }
+  }
+  label {
+    display: block;
+    color: $borderGrey;
+    background-color: $lightGrey;
+    padding: .5em;
+    font-size: 1.25em;
+    margin: 0;
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+  }
+}

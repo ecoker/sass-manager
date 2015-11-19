@@ -1,0 +1,229 @@
+@import '../variables/globals';
+
+$standardPadding: 22px;
+$desktopHeaderPadding: 15px;
+
+/* FONT STYLES AND COLORS --- */
+$errorText: #D0021B;
+$globalErrorColor: #E5001F;
+$errorInputBorder: #D0021B;
+$pageBodyColor: #F7F6F5;
+$borderColor: #D7D9E0; // BASE INPUT BORDER
+$disabledButtonColor: #D6D6D6; 
+$disabledSectionBorderColor: #DADADA;
+$labelColor: #666666;
+$standardBodyCopyColor: #666;
+$inputColor: #666666;
+$discountColor: #AB1919; // FOR LINE ITEM PRICING
+$subtextColor: #999; // COLOR OF ITEMS IN REVIEW SECTION
+$primaryBrandColor: #AB1919; // "FAMOUS RED" FOR HEADLINES AND PRIMARY BUTTON
+$primaryBrandHighlightColor: #E22426;
+$primaryFontColor: #333333; // TYPICALLY OFF BLACK
+$secondaryFontColor: #0073AE;
+$secondaryBackgroundColor: #0073AE;
+$secondaryColorHighlight: #1C99DA;
+$modalCloseColor1: #0073AE;
+$modalCloseColor2: #1C99DA;
+$modalCloseColor3: #11ACFB;
+$dividerBorderColor: #E7E7E7;
+
+/* INPUT COLORS AND STYLES --- */
+$inputBorder: 1px solid $borderColor;
+$inputBorderRadius:5px;
+
+$inputBorderRadius: 5px;
+
+/* BUTTON COLORS AND STYLES --- */
+@mixin buttonPadding($wide:false){
+  @if $wide {
+    padding: .45em 4em;
+  } @else {
+    padding: .45em 1.45em;
+  }
+  border-radius: $inputBorderRadius;
+  vertical-align: middle;
+  cursor:pointer;
+}
+
+$editButtonBorder: #BFBFBF;
+$editButtonBackground: #DBDEE0;
+@mixin editButtonStyles($wide:false){
+  background:$editButtonBackground;
+	background: linear-gradient(180deg, lighten($editButtonBackground,10%), $editButtonBackground);
+  color:darken($editButtonBorder,15%);
+  border: 1px solid $editButtonBorder;
+  @include buttonPadding($wide);
+
+  &:hover,
+  &:active,
+  &:focus {
+      background: linear-gradient(180deg, darken(#f6f7f8, 5%), darken(#DBDEE0, 5%));
+      color:darken($editButtonBorder,15%);
+      border: 1px solid $editButtonBorder;
+  }
+}
+
+$secondaryButtonBackground: $secondaryFontColor;
+@mixin secondaryButtonStyles($wide:false){
+  background:$editButtonBackground;
+  background: linear-gradient(180deg, lighten($secondaryButtonBackground,10%), $secondaryButtonBackground);
+  color:#fff;
+  @include buttonPadding($wide);
+}
+
+@mixin disabledButtonStyles($wide:false) {
+  background:$disabledButtonColor;
+  color:#fff;
+  @include buttonPadding($wide);
+}
+
+@mixin primaryButtonStyles(){
+  background:$primaryBrandColor;
+  background-image: linear-gradient(-180deg, $primaryBrandHighlightColor 0%, $primaryBrandColor 100%);
+  &:hover {
+    background:darken($primaryBrandColor, 8%);
+    background-image: linear-gradient(-180deg, darken($primaryBrandHighlightColor, 7%) 0%, darken($primaryBrandColor, 7%) 100%);
+  }
+}
+
+/* FONT FAMILIES AND MIXINS --- */
+$headingFont: "Archer Sm", sans-serif;
+@mixin headingFont() {
+	font-family:$headingFont;
+	font-weight:bold;
+	-webkit-font-smoothing:antialiased;
+}
+
+$supportFont: 'Helvetica Neue', Arial;
+@mixin supportFont() {
+	font-family: $supportFont;
+}
+
+/* STEP HEADERS FONT AND ICON COLORS --- */
+$disabledStepColor: #D7D7D7;
+$disabledStepIconColor: #D7D7D7;
+
+$currentStepColor: #333333;
+$currentStepIconColor: #F9C64F;
+
+$completedStepColor: #999999;
+$completedStepIconColor: #64CA73;
+
+$nextStepColor: #CDCDCD;
+$nextStepIconColor: #D7D7D7;
+
+
+/* RADIO-FORMS / PANELS --- */
+$inactiveItemBackground: #F8F8F8;
+$inactiveItemBorderColor: #EDEDED;
+$inactiveItemBoxShadow: 0px 1px 2px 0px rgba(6,16,48,0.35);
+$inactiveItemColor: $subtextColor;
+
+$activeItemBackground: #FFF;
+$activeItemBorderColor: #A0B7C3;
+$activeItemColor: $labelColor;
+$activeItemBoxShadow: 0px 0px 4px 0px #1BB2F6;
+$activeRadioBorder: #1BB2F6;
+
+$inactiveCardBackground: #F8F8F8;
+$inactiveCardBorderColor: #CBCBCB;
+
+$cardPinSectionTopBorder: #E7E5E5;
+
+$panelArrowColor: #AAAAAA;
+
+/* MISC ELEMENTS --- */
+$sectionBorderColor: #D6D6D6;
+$itemBorderRadius:2px;
+$modalBorder: #D3D3D3;
+$modalShadowColor: rgba(6, 16, 48, 0.20);
+
+@mixin wrapperCard(){
+  border-radius:$itemBorderRadius;
+  border:none;
+  box-shadow:0px 1px 3px 0px rgba(6,16,48,0.20);
+  background:#FFF;
+};
+
+$inputBoxShadowColor: #FBFBFB;
+
+@mixin inputBox() {
+  -webkit-appearance:none;
+  color:$standardBodyCopyColor;
+  border: $inputBorder;
+  border-radius: $inputBorderRadius;
+  box-shadow: inset 0px 5px 1px 0px $inputBoxShadowColor;
+}
+
+
+/* -------------------------------- */
+/* VIRTUAL CART THEME VARIABLES --- */
+/* -------------------------------- */
+$cartModalWidth:300px;
+@mixin cartModalFonts(){
+  /* NO MODAL SPECIFIC FONTS --- */
+}
+@mixin cartModalOverride(){
+  border:1px solid #C7C7C7;
+  padding:28px 44px 26px;
+}
+@mixin cartModalImageStyles(){
+  max-height:80px;
+}
+@mixin modalClose(){
+  border: 0;
+  font-size: 2.5em;
+  line-height: .75em;
+}
+@mixin errorHeading(){
+  @include headingFont();
+  font-size:1.9em;
+  color:#333;
+  margin-top:0;
+  line-height:1.1em;
+  -webkit-font-rendering:antialiased;
+}
+@mixin addItemOverride(){
+  padding-bottom:19px
+}
+@mixin cartNoteFont(){
+  color:#999;
+  font-style:normal;
+  line-height:1.35em;
+  font-size:1em;
+  strong {
+    color:$labelColor;
+  }
+}
+@mixin addToCartButton(){
+  background-color:$primaryBrandColor;
+  display: block;
+  margin-bottom: 10px;
+  width: 150px;
+  border:none;
+  font-size:.85em;
+  text-transform:uppercase;
+  padding:.75em 0;
+  color:white;
+}
+@mixin loader(){
+  padding:2em 0 1em;
+}
+@mixin buttonStyleOverrides(){
+  font-size:1.25em;
+  + button, + .button, + [type="submit"] {
+    @include primaryButtonStyles();
+    &:not(.link) {
+      margin-top:14px;
+    }
+  }
+  &.secondary {
+    @include secondaryButtonStyles(true);
+  }
+  &.link {
+    text-transform:none;
+    background:white;
+    text-decoration:underline;
+    color:$primaryBrandColor;
+  }
+}

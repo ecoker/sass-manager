@@ -1,0 +1,6 @@
+.icon-arrow {
+	background-image: url("/Assets/Shared/Images/drawer-arrow.png");
+}
+.panel.drawer .title .upArrow .icon-arrow {
+	transform: rotate(-180deg);
+}
