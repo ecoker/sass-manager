@@ -39,21 +39,27 @@ var stylesTask = function(path) {
 
 var sassMap = {}; // this is populated with the readSassDependencies function
 
+var addToSassMap = function(file, callback) {
+	if (typeof callback == 'undefined') callback = function(){};
+	fs.readFile(file, 'utf8', function (err,data) {
+	  if (err) return console.log(err);
+	  var matches = data.match(/@import\s+'([^']+)'/gi);
+	  if (matches) {
+	  	sassMap[file] = {
+	  		childrenExp : []
+	  	};
+	  	matches.forEach(function(m){
+	  		sassMap[file].childrenExp.push( new RegExp(m.match(/@import\s+'([^']+)'/i)[1].replace(/\.+/,'').replace(/(_|.scss)/, "($1)?").replace(/([A-z]+)(.scss)?$/, "(_)?$1$2"), 'i') );
+	  	});
+	  }
+	  callback( file );
+	});
+}
+
 var readSassDependencies = function() {
 	glob(src.styles, function(err, files) {
 		files.forEach(function(file){
-			fs.readFile(file, 'utf8', function (err,data) {
-			  if (err) return console.log(err);
-			  var matches = data.match(/@import\s+'([^']+)'/gi);
-			  if (matches) {
-			  	sassMap[file] = {
-			  		childrenExp : []
-			  	};
-			  	matches.forEach(function(m){
-			  		sassMap[file].childrenExp.push( new RegExp(m.match(/@import\s+'([^']+)'/i)[1].replace(/\.+/,'').replace(/(_|.scss)/, "($1)?").replace(/([A-z]+)(.scss)?$/, "(_)?$1$2"), 'i') );
-			  	});
-			  }
-			});
+			addToSassMap(file);
 		});
 	});
 };
@@ -63,7 +69,6 @@ var readSassMap = function(filePath){
 		var run = false;
 		sassMap[i].childrenExp.forEach(function(exp){
 			if (exp.test(filePath) && !run) {
-				console.log( 'run it: ' + i );
 				stylesTask( i );
 				run = !0;
 			}
@@ -82,7 +87,7 @@ gulp.task('styles', function () {
 gulp.task('watch', function(){
 	watch(['./**/*.scss'], function(file) {
 		stylesTask( file.path );
-		readSassMap( file.path );
+		addToSassMap(file.path, readSassMap);
 	});
 });
 
