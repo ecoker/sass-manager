@@ -1,17 +1,15 @@
-var gulp			= require('gulp');
+var gulp	= require('gulp');
 
 /* MISC --- */
-var source			= require('vinyl-source-stream');
-var rename			= require('gulp-rename');
-var glob			= require('glob');
+var glob = require('glob');
 
 /* SCSS --- */
-var sass			= require('gulp-sass');
-var autoprefixer	= require('gulp-autoprefixer');
-var uglifycss		= require('gulp-uglifycss');
+var sass	= require('gulp-sass');
+var autoprefixer = require('gulp-autoprefixer');
+var uglifycss	= require('gulp-uglifycss');
 
 /* UPDATED GULP WATCH --- */
-var watch			= require('gulp-watch');
+var watch	= require('gulp-watch');
 
 /* FILE SYSTEM --- */
 var fs = require('fs');
